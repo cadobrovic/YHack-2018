@@ -54,6 +54,9 @@ app.get('/callback', function(req, res, next) {
     .then(function(result) {
       // instantiate first vehicle in vehicle list
       const vehicle = new smartcar.Vehicle(result.vehicles[0], access.accessToken);
+    
+      //unlocks the car in the Parking Lot
+      vehicle.unlock();
       
       // get identifying information about a vehicle
       return vehicle.info();
